@@ -1,0 +1,62 @@
+<!--
+  This template loads for the 'tab.pet-detail' state (app.js)
+  'pet' is a $scope variable created in the PetCtrl controller (controllers.js)
+  The PetCtrl pulls data from the Pets service (service.js)
+  The Pets service returns an array of pet data
+-->
+<ion-view title="myevent.title">
+    <ion-content
+            has-header="true"
+            has-tabs="true"
+            padding="true"
+            >
+
+        <div ng-hide="myevent.inIframe">
+            <div class="list card">
+
+                <div class="item item-avatar">
+                    <img src="img/survey.jpg">
+
+                    <h2>{{myevent.title}}</h2>
+
+                    <p>{{life_events[0].result.hospital.name}}</p>
+
+                </div>
+                <div class="item">
+                    <div class="padding-top">
+                        <p>
+                            Open survey inside this app.
+                        </p>
+                        <button class="button button-outline button-positive" ng-click="showIframe()">
+                            Start survey (inside app)
+                        </button>
+
+                    </div>
+                    <div class="padding-top">
+                        <p>
+                            Open survey in your default brwoser (not working.)
+                        </p>
+                        <a href="{{myevent.surveyUrl}}" target="_blank">
+                            <button class="button button-outline button-dark">
+                                Start survey (in a Browser Window)
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div style="margin:0; padding:0; height:95%;" ng-show="myevent.inIframe">
+            <iframe src="{{myevent.surveyUrl}}" style="height:95%; display:block; width:100%; border:none;">
+                <a href="{{myevent.surveyUrl}}">
+                    <button class="button button-outline button-positive">
+                        Start survey : {{myevent.title}}
+                    </button>
+                </a>
+            </iframe>
+        </div>
+
+    </ion-content>
+</ion-view>

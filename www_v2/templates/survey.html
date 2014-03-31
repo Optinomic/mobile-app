@@ -1,0 +1,54 @@
+<!--
+  This template loads for the 'tab.pet-detail' state (app.js)
+  'pet' is a $scope variable created in the PetCtrl controller (controllers.js)
+  The PetCtrl pulls data from the Pets service (service.js)
+  The Pets service returns an array of pet data
+-->
+<ion-view title="myevent.title">
+    <ion-content
+            has-header="true"
+            has-tabs="true"
+            padding="true"
+            >
+
+        <div ng-hide="myevent.inIframe">
+            <div class="list card">
+
+                <div class="item item-avatar">
+                    <img src="img/survey.jpg">
+
+                    <h2>{{myevent.title}}</h2>
+
+                    <p>survey</p>
+
+                    <div class="padding-top">
+                        <a href="{{myevent.surveyUrl}}" target="_blank">
+                            <button class="button button-outline button-positive">
+                                Start survey (in a Browser Window)
+                            </button>
+                        </a>
+                    </div>
+                    <div class="padding-top">
+                        <button class="button button-outline button-dark" ng-click="showIframe()">
+                            Start survey (inside app)
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div style="margin:0; padding:0; height:86%;" ng-show="myevent.inIframe">
+            <iframe src="{{myevent.surveyUrl}}" style="height:86%; display:block; width:100%; border:none;">
+                <a href="{{myevent.surveyUrl}}" target="_blank">
+                    <button class="button button-outline button-positive">
+                        Start survey : {{myevent.title}}
+                    </button>
+                </a>
+            </iframe>
+        </div>
+
+    </ion-content>
+</ion-view>

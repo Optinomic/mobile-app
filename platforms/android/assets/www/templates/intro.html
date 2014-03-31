@@ -1,0 +1,87 @@
+<!-- 
+  This template gets placed in the tab's <ion-nav-view> directive.
+ -->
+
+<ion-view title="'Optinomic Intro'">
+    <ion-content
+            has-header="true"
+            has-tabs="false"
+            scroll="true"
+            class="positive-bg"
+            >
+
+
+        <!-- content -->
+
+        <div class="row padding">
+                    <div class="col col-top" ng-show="slideIndex == 0">
+                        <button class="button icon-left button-outline button-light" ng-click="appStart()">
+                          Skip Intro
+                        </button>
+                    </div>
+                    <div class="col col-top" ng-hide="slideIndex == 0">
+                        <button class="button icon-left ion-chevron-left button-outline button-light" ng-click="prev()">
+                          Prev
+                        </button>
+                    </div>
+
+                     <div class="col col-top" ng-hide="slideIndex == 2">
+                        <button class="button icon-right ion-chevron-right button-outline button-light" ng-click="next()" style="float:right;">
+                          Next
+                        </button>
+                    </div>
+                    <div class="col col-top" ng-show="slideIndex == 2">
+                        <button class="button icon-left ion-android-checkmark button-outline button-light" ng-click="appStart()" style="float:right;">
+                          I got it
+                        </button>
+                    </div>
+        </div>
+
+
+        <ion-slide-box class="optinomic-center" on-slide-changed="slideChanged(index)">
+          <ion-slide>
+            <h3 class="optinomic_title">
+                {{slideTitle}}
+            </h3>
+            <p>
+              We have worked super hard to make you happy. But if you are angry, too bad.
+            </p>
+
+          </ion-slide>
+          
+
+          <ion-slide>
+            <h3 class="optinomic_title">
+                {{slideTitle}}
+            </h3>
+            
+            <div id="list">
+              <h5>Just three steps:</h5>
+              <ol>
+                <li>Be awesome</li>
+                <li>Stay awesome</li>
+                <li>There is no step 3</li>
+              </ol>
+            </div>
+
+
+          </ion-slide>
+          <ion-slide>
+            <h3 class="optinomic_title">
+                {{slideTitle}}
+            </h3>
+            <p>
+              Too bad!
+            </p>
+
+
+          </ion-slide>
+        </ion-slide-box>
+            
+         </div>
+
+  
+
+
+    </ion-content>
+</ion-view>

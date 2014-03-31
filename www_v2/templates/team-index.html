@@ -1,0 +1,45 @@
+<!-- 
+  This template gets placed in the tab's <ion-nav-view> directive.
+  It was wired up in the app config (app.js) 
+-->
+
+<ion-view title="'Care Team'">
+    <ion-content has-header="true" has-tabs="false">
+
+        <div class="card">
+            <div class="item item-divider positive-bg">
+                {{care_team.result.hospital.name}}
+            </div>
+            <div class="item item-text-wrap">
+                <h2>{{care_team.result.hospital.name}}</h2>
+
+                <p>
+                    {{care_team.result.hospital.address}}<br>
+                    {{care_team.result.hospital.city}}
+                    <br><br>
+                    {{care_team.result.hospital.email}}
+                    {{care_team.result.hospital.phone}}
+                    {{care_team.result.hospital.website}}
+                    <br><br>
+                    {{care_team.result.hospital.description}}
+                </p>
+
+            </div>
+            <div class="item item-divider">
+                <small>{{care_team.filled}}</small>
+            </div>
+        </div>
+
+
+        <ion-list>
+
+            <ion-item ng-repeat="details in care_team.result.careteam" type="item-text-wrap" href="#/tab/pet/{{pet.id}}">
+                <h2>{{details.firstName}} {{details.lastName}}</h2>
+
+                <p>{{details.filled}}</p>
+            </ion-item>
+
+        </ion-list>
+
+    </ion-content>
+</ion-view>

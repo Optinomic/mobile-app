@@ -1,0 +1,44 @@
+<!-- 
+  This template gets placed in the tab's <ion-nav-view> directive.
+  It was wired up in the app config (app.js) 
+-->
+
+<ion-view title="team_member.title">
+    <ion-content has-header="true" has-tabs="false" class="stable-bg">
+
+        <div class="card">
+            <div class="item item-avatar">
+                <img src="img/care_team.png">
+
+                <h2>{{team_member.title}}</h2>
+                <p>{{care_team.result.hospital.name}}</p>
+            </div>
+
+            <div class="item item-text-wrap">
+                <h2>{{team_member.phone}}</h2>
+
+                <p>
+                    <a href="mailto:{{team_member.email}}">{{team_member.email}}</a>
+                </p>
+
+            </div>
+
+            <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="mailto:{{team_member.email}}">
+                    <i class="icon ion-ios7-email-outline"></i>
+                    Send Mail
+                </a>
+                <a class="tab-item" href="{{care_team.result.hospital.website}}">
+                    <i class="icon ion-android-earth"></i>
+                    Visit Website
+                </a>
+                <a class="tab-item" href="tel:{{team_member.phone}}">
+                    <i class="icon ion-android-call"></i>
+                    Call
+                </a>
+            </div>
+
+        </div>
+
+    </ion-content>
+</ion-view>

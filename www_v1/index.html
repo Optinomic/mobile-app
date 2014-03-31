@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ionic Seed</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- ionic css -->
+    <link href="css/ionic.css" rel="stylesheet">
+
+    <!-- your app's css -->
+    <link href="css/app.css" rel="stylesheet">
+
+    <!-- ionic/angularjs scripts -->
+    <script src="js/ionic.js"></script>
+    <script src="js/angular/angular.js"></script>
+    <script src="js/angular/angular-animate.js"></script>
+    <script src="js/angular/angular-route.js"></script>
+    <script src="js/angular/angular-touch.js"></script>
+    <script src="js/angular/angular-sanitize.js"></script>
+    <script src="js/ionic-angular.js"></script>
+
+    <!-- plugin -->
+    <script src="js/LaunchMyApp.js"></script>
+
+    <!-- cordova script -->
+    <script src="cordova.js"></script>
+
+    <style>
+      .fade-bar {
+        height: 20px;
+        width: 100%;
+        position: fixed;
+        z-index: 9999;
+        opacity: 0;
+        background-color: #000;
+      }
+    </style>
+  </head>
+
+  <!-- 'starter' is the name of this angular module (js/app.js)-->
+  <body ng-app="starter">
+    <div ng-controller="MainCtrl">
+      <side-menus>
+        <pane side-menu-content>
+          <header class="bar bar-header bar-positive">
+            <button class="button button-icon" ng-click="openLeft()"><i class="icon ion-navicon"></i></button>
+            <h1 class="title">Optinomic</h1>
+          </header>
+          <content has-header="true" padded="true">
+
+            <div class="list card">
+
+              <div class="item item-avatar">
+                <img src="http://static1.wikia.nocookie.net/__cb20090404204743/memoryalpha/en/images/c/c4/Montgomery_Scott,_2267.jpg">
+                <h2>Lt. Commander Montgomery Scott</h2>
+                <p>21.5.1973</p>
+              </div>
+
+              <div class="item item-body">
+                <h2>Unplanned</h2>
+                <p>
+                  I'm having a:
+                </p>
+
+               <div class="row">
+                  
+                  <div class="col col-67">
+                    <button class="button button-outline button-positive" ng-click="addUnplannedEvent()">
+                      panic attack
+                    </button>
+                  </div>
+                  <div class="col">
+                    
+                    <button class="button button-light" ng-click="clearLocalStorage()">
+                      clear
+                    </button>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <h1>{{panic}}</h1>
+                  </div>
+                  <div class="col col-67">
+                    <p>Panic Attacks:  <small>(stored in window.localStorage)</small></p>
+                  </div>
+                  
+                </div>
+
+              
+                <h2>Recurring</h2>
+                <p>
+                  We are interessted in you - answer now:
+                </p>
+
+                <a class="button button-outline button-positive" href="http://survey.optinomix.org/takesurvey/43b0012396e8a333">
+                  daily_mood
+                </a>
+              </div>
+
+              <div class="item tabs tabs-secondary tabs-icon-left">
+                <a class="tab-item" href="#">
+                  <i class="icon ion-thumbsup"></i>
+                  Like
+                </a>
+                <a class="tab-item" href="#">
+                  <i class="icon ion-chatbox"></i>
+                  Comment
+                </a>
+                <a class="tab-item" href="#">
+                  <i class="icon ion-share"></i>
+                  Share
+                </a>
+              </div>
+
+            </div>
+          </content>
+        </pane>
+        <side-menu side="left">
+          <header class="bar bar-header bar-dark" fade-header>
+            <h1 class="title">Left</h1>
+          </header>
+          <content has-header="true">
+            <ul class="list">
+              <a href="#" class="item" ng-repeat="item in list">
+                {{item.text}}
+              </a>
+            </ul>
+          </content>
+        </side-menu>
+      </side-menus>
+    </div>
+    <script>
+      angular.module('starter', ['ionic'])
+
+      .controller('MainCtrl', function($scope) {
+
+          // init counter value
+          $scope.panic = window.localStorage.getItem('panic');
+          if (($scope.panic === undefined) || ($scope.panic === null) || ($scope.panic === NaN) ) {
+            $scope.panic = 0;
+          };
+        
+
+        $scope.list = [];
+        for(var i = 0; i < 5; i++) {
+          $scope.list.push({
+            text: 'My Items ' + (i + 1)
+          });
+        }
+        
+        $scope.openLeft = function() {
+          $scope.sideMenuController.toggleLeft();
+        };
+
+
+        $scope.addUnplannedEvent = function() {
+          console.log("addUnplannedEvent"); 
+          
+          $scope.panic = parseInt($scope.panic) + 1;
+          console.log($scope.panic);
+
+          window.localStorage.setItem('panic', parseInt($scope.panic));
+        };
+ 
+        $scope.clearLocalStorage = function() {
+          console.log("LocalStorage cleared"); 
+          window.localStorage.clear();
+          $scope.panic = 0;
+         };
+
+      })
+
+    </script>
+  </body>
+</html>
+
